@@ -1,0 +1,42 @@
+name: Check Files on "finished" Commit
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  check_files:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Check if index.html exists
+        run: |
+          if [ ! -f index.html ]; then
+            echo "Error: index.html is missing."
+            exit 1
+          fi
+
+      - name: Check if style.css exists
+        run: |
+          if [ ! -f style.css ]; then
+            echo "Error: style.css is missing."
+            exit 1
+          fi
+
+      - name: Check if script.js exists
+        run: |
+          if [ ! -f script.js ]; then
+            echo "Error: script.js is missing."
+            exit 1
+          fi
+
+      - name: Final message
+        run: |
+          if [ -f index.html ] && [ -f style.css ] && [ -f script.js ]; then
+            echo "Success: Both files are present."
+          else
+            echo "Warning: One or more files are missing."
+          fi
