@@ -2,6 +2,7 @@
     --black: #1E1E1E;
     --white: #FFFFFF;
     --a-hover: #000000af;
+    --popup-background: rgba(0, 0, 0, 0.514);
 }
 
 *,
@@ -149,4 +150,10 @@ footer {
     background: var(--black);
     height: 360px;
     padding: 10px;
+}
+
+.monument-image:hover {
+    scale: 1.1;
+    transition: 0.5s ease;
+    cursor: pointer;
 }
