@@ -51,3 +51,17 @@ navlinks.forEach(link => {
         afficherPopup(e.target);
     });
 });
+
+const monumentImages = document.querySelectorAll('.monument-image');
+let imageActive = null;
+for(let i = 0; i < monumentImages.length; i++) {
+    monumentImages[i].style.filter = 'blur(2px)';
+    monumentImages[i].addEventListener('click', () => {
+        if (imageActive) {
+            imageActive.style.filter = 'blur(2px)';
+        }
+        monumentImages[i].style.filter = 'blur(0px)';
+        imageActive = monumentImages[i];
+    });
+}
+
